@@ -1,2 +1,2 @@
 # RoughGardenAlgos
-RoughGarden Algorithms
+Select Algorithms from RoughGarden's Coursera Algorithms course
