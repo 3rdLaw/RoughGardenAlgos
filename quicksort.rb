@@ -37,8 +37,8 @@ end
 ARRAY_SIZE = 30
 MAX_VALUE = 100
 for i in 0...1000
-  ary = Array(0...ARRAY_SIZE).map! { rand(MAX_VALUE)}.shuffle
-  pre_ary = Array.new(ary)
+  ary = Array.new(ARRAY_SIZE) { |i| rand(MAX_VALUE)}
+  pre_ary = ary.dup
   quicksort! ary
 
   if (pre_ary.sort != ary)
