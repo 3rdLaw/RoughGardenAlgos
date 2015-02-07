@@ -1,5 +1,4 @@
 #lang racket
-(require library/library)
 
 ;;Determines Nth smallest element (starting at 1) of lst in linear time deterministically
 ;;So this means select's "pos" arg. is 1-index based
@@ -38,6 +37,17 @@
   (cond [(empty? lst)        lst]
         [(odd? (length lst)) (list-ref lst (ceiling (quotient (length lst) 2)))]
         [else                (list-ref lst (sub1    (quotient (length lst) 2)))]))
+
+(define (chunk-uneven lst num)
+  (define (recur num lst so-far)
+    (if (empty? lst)
+        (reverse (map reverse so-far))
+        (let loop ([cur (list (car lst))][rst (cdr lst)])
+          (if (or (empty? rst) (= (length cur) num))
+              (recur num rst (cons cur so-far))
+              (loop (cons (car rst) cur) (cdr rst))))))
+
+  (recur num lst '()))
 
 ;;Compare speed between random and non-random versions.
 ;;Randomized is generally at least 3x faster
