@@ -3,9 +3,8 @@
 (define SUFFIX "$")
 
 ;; Random Contraction Min Cut algorithgm
-;; It group vertices into two groups, hopefully w/min. # of edge crossings.
+;; It groups vertices into two groups, hopefully w/min. # of edge crossings.
 (define (random-contraction adj-lst)
-
   ;We call remove-dups to ensure we have no dups in our edge listing
   ;We also add a suffix in case node's are numbers (without the suffix,
   ; it can be unclear which nodes were concatentated to form the given node):
