@@ -1,6 +1,6 @@
 #lang racket
 (require graph data/heap)
-
+(provide (contract-out [my-dijkstra (-> graph? any/c (values hash? hash?))]))
 ;; O( (|E|+|V|) * log(|V|) )
 (define (my-dijkstra g v)
   ;hash where vertex ->  min distance to that vertex
@@ -31,7 +31,7 @@
             ;else keep path & distance unchanged
             [else path])]))
 
-  ;;inner loop is (|V| + |E|) * times some number of heap operations (which are all log(|V|))
+  ;;inner loop is (|V| + |E|) * some number of heap operations (which are all log(|V|))
   (let loop ([path (hash)]);we loop over each vertex through our heap, thus |V|
     (if  ((heap-count heap) . = . 0);if no more vertices
          (values distance-hash path);return distances & paths
